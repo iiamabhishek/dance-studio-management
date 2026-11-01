@@ -131,6 +131,9 @@ class MemberForm
                     ])->columns(4),
                 LocationSection::make(
                     pincodeRequired: true,
+                    countrySearchable: true,
+                    countryPreloaded: true,
+                    regionSearchable: true,
                 ),
                 Section::make(__('app.titles.subscription_and_invoice'))
                     ->visibleOn('create')
