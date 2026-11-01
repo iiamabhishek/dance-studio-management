@@ -1,0 +1,9 @@
+node_modules
+.git
+.vercel
+tests
+docs
+*.log
+storage/logs/**
+.env.local
+VERCEL_OIDC_TOKEN

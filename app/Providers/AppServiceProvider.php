@@ -9,6 +9,7 @@ use App\Helpers\Helpers;
 use App\Models\User;
 use App\Observers\UserObserver;
 use App\Services\Api\Docs\AddIndexQueryParametersTransformer;
+use App\Services\DatabaseSettingsRepository;
 use App\Services\JsonSequenceRepository;
 use App\Services\JsonSettingsRepository;
 use App\Services\NullTenantContext;
@@ -51,7 +52,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(SettingsRepository::class, JsonSettingsRepository::class);
+        // Settings persist to the database on serverless/env-specific installs
+        // (file JSON is ephemeral on Vercel). Set SETTINGS_STORE=database there.
+        $this->app->singleton(SettingsRepository::class, fn () => env('SETTINGS_STORE', 'json') === 'database'
+            ? new DatabaseSettingsRepository
+            : app(JsonSettingsRepository::class));
         $this->app->singleton(SequenceRepository::class, JsonSequenceRepository::class);
         $this->app->singletonIf(TenantContext::class, NullTenantContext::class);
     }
