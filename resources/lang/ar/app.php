@@ -269,10 +269,10 @@ return [
             'others' => 'اخرى',
         ],
         'goal' => [
-            'fitness' => 'لياقة',
-            'body_building' => 'بناء عضلات',
-            'fatloss' => 'خسارة دهون',
-            'weightgain' => 'زيادة وزن',
+            'fitness' => 'لياقة راقصة',
+            'body_building' => 'كوريغرافيا',
+            'fatloss' => 'أداء المسرح',
+            'weightgain' => 'استعداد للمسابقات',
             'others' => 'اخرى',
         ],
         'follow_up_method' => [
@@ -323,7 +323,7 @@ return [
             'save_settings' => 'حفظ الاعدادات',
         ],
         'tabs' => [
-            'gym_info' => 'معلومات النادي',
+            'gym_info' => 'معلومات الاستوديو',
             'invoice' => 'الفاتورة',
             'member' => 'الاعضاء',
             'charges' => 'الرسوم',
@@ -337,9 +337,9 @@ return [
             'email' => 'البريد الالكتروني',
         ],
         'fields' => [
-            'gym_name' => 'اسم النادي',
+            'gym_name' => 'اسم الاستوديو',
             'currency' => 'العملة',
-            'gym_logo' => 'شعار النادي',
+            'gym_logo' => 'شعار الاستوديو',
             'financial_year_start' => 'بداية السنة المالية',
             'financial_year_end' => 'نهاية السنة المالية',
             'address' => 'العنوان',
@@ -365,8 +365,8 @@ return [
         ],
         'options' => [
             'name_type' => [
-                'gym_name' => 'اسم النادي',
-                'gym_logo' => 'شعار النادي',
+                'gym_name' => 'اسم الاستوديو',
+                'gym_logo' => 'شعار الاستوديو',
             ],
         ],
         'hints' => [
@@ -513,7 +513,7 @@ return [
             'subtotal' => 'المجموع الفرعي',
             'total_paid' => 'اجمالي المدفوع',
             'total_due' => 'اجمالي المتبقي',
-            'footer_tagline' => 'نساعدك على تحقيق هدفك | :domain',
+            'footer_tagline' => 'الرقص. الأداء. التألق | :domain',
         ],
     ],
     'emails' => [

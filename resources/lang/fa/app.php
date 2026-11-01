@@ -269,10 +269,10 @@ return [
             'others' => 'سایر موارد',
         ],
         'goal' => [
-            'fitness' => 'تناسب اندام',
-            'body_building' => 'بدنسازی',
-            'fatloss' => 'کاهش چربی',
-            'weightgain' => 'افزایش وزن',
+            'fitness' => 'لیاقت رقص',
+            'body_building' => 'کریوگرافی',
+            'fatloss' => 'اجرای صحنه',
+            'weightgain' => 'آمادگی مسابقه',
             'others' => 'سایر اهداف',
         ],
         'follow_up_method' => [
@@ -323,7 +323,7 @@ return [
             'save_settings' => 'ذخیره تنظیمات',
         ],
         'tabs' => [
-            'gym_info' => 'اطلاعات باشگاه',
+            'gym_info' => 'اطلاعات استودیو',
             'invoice' => 'تنظیمات فاکتور',
             'member' => 'تنظیمات اعضا',
             'charges' => 'هزینه‌ها و تعرفه‌ها',
@@ -337,9 +337,9 @@ return [
             'email' => 'ایمیل سیستم',
         ],
         'fields' => [
-            'gym_name' => 'نام باشگاه',
+            'gym_name' => 'نام استودیو',
             'currency' => 'واحد پول',
-            'gym_logo' => 'لوگوی باشگاه',
+            'gym_logo' => 'لوگوی استودیو',
             'financial_year_start' => 'شروع سال مالی',
             'financial_year_end' => 'پایان سال مالی',
             'address' => 'آدرس',
@@ -365,8 +365,8 @@ return [
         ],
         'options' => [
             'name_type' => [
-                'gym_name' => 'نام باشگاه',
-                'gym_logo' => 'لوگوی باشگاه',
+                'gym_name' => 'نام استودیو',
+                'gym_logo' => 'لوگوی استودیو',
             ],
         ],
         'hints' => [
@@ -513,7 +513,7 @@ return [
             'subtotal' => 'جمع جزء',
             'total_paid' => 'کل پرداخت شده',
             'total_due' => 'کل بدهی باقی‌مانده',
-            'footer_tagline' => 'افزایش‌دهنده پتانسیل شما | :domain',
+            'footer_tagline' => 'برقص. اجرا کن. بدرخش | :domain',
         ],
     ],
     'emails' => [

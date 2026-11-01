@@ -269,10 +269,10 @@ return [
             'others' => 'Others',
         ],
         'goal' => [
-            'fitness' => 'Fitness',
-            'body_building' => 'Body Building',
-            'fatloss' => 'Fatloss',
-            'weightgain' => 'Weightgain',
+            'fitness' => 'Dance fitness',
+            'body_building' => 'Choreography',
+            'fatloss' => 'Stage performance',
+            'weightgain' => 'Competition prep',
             'others' => 'Others',
         ],
         'follow_up_method' => [
@@ -323,7 +323,7 @@ return [
             'save_settings' => 'Save settings',
         ],
         'tabs' => [
-            'gym_info' => 'Gym Info',
+            'gym_info' => 'Studio Info',
             'invoice' => 'Invoice',
             'member' => 'Member',
             'charges' => 'Charges',
@@ -337,9 +337,9 @@ return [
             'email' => 'Email',
         ],
         'fields' => [
-            'gym_name' => 'Gym Name',
+            'gym_name' => 'Studio Name',
             'currency' => 'Currency',
-            'gym_logo' => 'Gym Logo',
+            'gym_logo' => 'Studio Logo',
             'financial_year_start' => 'Financial year start',
             'financial_year_end' => 'Financial year end',
             'address' => 'Address',
@@ -365,8 +365,8 @@ return [
         ],
         'options' => [
             'name_type' => [
-                'gym_name' => 'Gym Name',
-                'gym_logo' => 'Gym Logo',
+                'gym_name' => 'Studio Name',
+                'gym_logo' => 'Studio Logo',
             ],
         ],
         'hints' => [
@@ -513,7 +513,7 @@ return [
             'subtotal' => 'Subtotal',
             'total_paid' => 'Total Paid',
             'total_due' => 'Total Due',
-            'footer_tagline' => 'Fueling your potential | :domain',
+            'footer_tagline' => 'Dance. Perform. Shine. | :domain',
         ],
     ],
     'emails' => [

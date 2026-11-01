@@ -269,10 +269,10 @@ return [
             'others' => 'Autres',
         ],
         'goal' => [
-            'fitness' => 'Fitness',
-            'body_building' => 'Musculation',
-            'fatloss' => 'Perte de graisse',
-            'weightgain' => 'Prise de poids',
+            'fitness' => 'Fitness dansée',
+            'body_building' => 'Chorégraphie',
+            'fatloss' => 'Performance scénique',
+            'weightgain' => 'Préparation aux compétitions',
             'others' => 'Autres',
         ],
         'follow_up_method' => [
@@ -337,7 +337,7 @@ return [
             'email' => 'Email',
         ],
         'fields' => [
-            'gym_name' => 'Nom de la salle',
+            'gym_name' => 'Nom du studio',
             'currency' => 'Devise',
             'gym_logo' => 'Logo',
             'financial_year_start' => 'Début de l\'année fiscale',
@@ -365,7 +365,7 @@ return [
         ],
         'options' => [
             'name_type' => [
-                'gym_name' => 'Nom de la salle',
+                'gym_name' => 'Nom du studio',
                 'gym_logo' => 'Logo',
             ],
         ],
@@ -513,7 +513,7 @@ return [
             'subtotal' => 'Sous-total',
             'total_paid' => 'Total payé',
             'total_due' => 'Total dû',
-            'footer_tagline' => 'Alimentez votre potentiel | :domain',
+            'footer_tagline' => 'Dansez. Performez. Brillez | :domain',
         ],
     ],
     'emails' => [

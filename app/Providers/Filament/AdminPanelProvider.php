@@ -63,9 +63,9 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
             ->passwordReset()
-            ->brandName('Gymie')
-            ->brandLogo('/images/logo.svg')
-            ->darkModeBrandLogo('/images/logo-dark-mode.svg')
+            ->brandName(fn (): string => strval(data_get(app(\App\Contracts\SettingsRepository::class)->get(), 'general.gym_name')) ?: 'Gymie')
+            ->brandLogo(fn (): string => $this->brandLogoUrl())
+            ->darkModeBrandLogo(fn (): string => $this->brandLogoUrl())
             ->brandLogoHeight('2.5rem')
             ->favicon('/images/favicon.svg')
             ->unsavedChangesAlerts()
@@ -167,12 +167,29 @@ class AdminPanelProvider extends PanelProvider
     }
 
     /**
+     * Resolve the brand logo from studio settings, falling back to the default wordmark.
+     */
+    protected function brandLogoUrl(): string
+    {
+        $logoPath = trim(strval(data_get(app(\App\Contracts\SettingsRepository::class)->get(), 'general.gym_logo')));
+
+        if ($logoPath !== '') {
+            $url = \Illuminate\Support\Facades\Storage::disk('public')->url($logoPath);
+
+            if ($url !== '') {
+                return $url;
+            }
+        }
+
+        return '/images/logo.svg';
+    }
+
+    /**
      * Panel color palette.
      *
      * @return array<string, mixed>
      */
-    protected function colors(): array
-    {
+    protected function colors(): array    {
         return [
             'primary' => [
                 50 => '#b3fefc',

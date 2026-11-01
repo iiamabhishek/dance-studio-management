@@ -2,6 +2,7 @@
 
 namespace App\Support\Filament;
 
+use App\Contracts\SettingsRepository;
 use App\Helpers\Helpers;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -13,6 +14,15 @@ use Filament\Schemas\Components\Utilities\Set;
 
 final class LocationSection
 {
+    /**
+     * Default country resolution for new-records: comes from Studio Info settings.
+     */
+    private static function studioCountry(): ?string
+    {
+        $country = trim(strval(data_get(app(SettingsRepository::class)->get(), 'general.country')));
+
+        return $country !== '' ? $country : null;
+    }
     /**
      * Build the shared location fields while preserving resource-specific layout and validation.
      */
@@ -40,6 +50,7 @@ final class LocationSection
                             ->label(__('app.fields.country'))
                             ->placeholder(__('app.placeholders.select_country'))
                             ->options(Helpers::getCountries())
+                            ->default(fn (): ?string => self::studioCountry())
                             ->searchable($countrySearchable)
                             ->preload($countryPreloaded)
                             ->required()
