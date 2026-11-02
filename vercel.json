@@ -1,9 +1,11 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "framework": null,
+    "buildCommand": "cmd /c build-fix.bat",
+    "installCommand": "composer install --no-dev --no-scripts --prefer-dist --optimize-autoloader",
     "functions": {
         "api/index.php": {
-            "runtime": "vercel-php@0.8.0",
+            "runtime": "vercel-php@0.9.0",
             "maxDuration": 30
         }
     },

@@ -3,7 +3,13 @@ node_modules
 .vercel
 tests
 docs
+vendor
+.env
+.env.*
 *.log
+temp_service
+check_db.php
+create_admin.php
+start.bat
 storage/logs/**
-.env.local
 VERCEL_OIDC_TOKEN

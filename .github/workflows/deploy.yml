@@ -1,0 +1,40 @@
+name: Deploy to Vercel (Linux finish)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Include .vercel/output if you want pure --prebuilt deploy
+          # Otherwise let vercel build generate it
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Pull env and settings
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: team_griCb20aFBQdGhX2CX1NkDszSD
+          VERCEL_PROJECT_ID: prj_5RmYhwg5SEA6zIT4JnyfK2vZYh0
+        run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+
+      - name: Build (Linux — this installs PHP binary)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --yes --token=$VERCEL_TOKEN
+
+      - name: Deploy production (prebuilt with fixed .vercel/output)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --prod --prebuilt --yes --token=$VERCEL_TOKEN
