@@ -61,6 +61,12 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+                // Reuse the TCP+TLS+auth handshake across requests on a warm
+                // serverless instance (big win against remote MySQL hosts).
+                \PDO::ATTR_PERSISTENT => env('DB_PERSISTENT', false) === 'true',
+                // Compress the wire protocol: helps a lot on high-latency
+                // or cross-continent MySQL links.
+                Mysql::ATTR_COMPRESS => env('DB_COMPRESS', false) === 'true',
             ]) : [],
         ],
 

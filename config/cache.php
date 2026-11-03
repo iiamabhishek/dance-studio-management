@@ -49,8 +49,10 @@ return [
 
         'file' => [
             'driver' => 'file',
-            'path' => storage_path('framework/cache/data'),
-            'lock_path' => storage_path('framework/cache/data'),
+            // CACHE_FILE_PATH lets serverless hosts point the cache at the
+            // only writable location (/tmp) instead of the read-only repo.
+            'path' => env('CACHE_FILE_PATH', storage_path('framework/cache/data')),
+            'lock_path' => env('CACHE_FILE_PATH', storage_path('framework/cache/data')),
         ],
 
         'memcached' => [

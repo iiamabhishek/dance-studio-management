@@ -59,6 +59,10 @@ class AppServiceProvider extends ServiceProvider
             : app(JsonSettingsRepository::class));
         $this->app->singleton(SequenceRepository::class, JsonSequenceRepository::class);
         $this->app->singletonIf(TenantContext::class, NullTenantContext::class);
+
+        // Stage Livewire's upload temp files on the dedicated livewire-tmp
+        // disk (a writable root is required on read-only serverless hosts).
+        config(['livewire.temporary_file_upload.disk' => 'livewire-tmp']);
     }
 
     /**

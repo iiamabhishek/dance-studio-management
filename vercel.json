@@ -1,23 +1,85 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "framework": null,
-    "buildCommand": "cmd /c build-fix.bat",
-    "installCommand": "composer install --no-dev --no-scripts --prefer-dist --optimize-autoloader",
-    "functions": {
-        "api/index.php": {
-            "runtime": "vercel-php@0.9.0",
-            "maxDuration": 30
+    "builds": [
+        {
+            "src": "api/index.php",
+            "use": "vercel-php-bridge"
+        },
+        {
+            "src": "public/css/**/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/js/**/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/fonts/**/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/build/**/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/images/**/*",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/favicon.ico",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "public/robots.txt",
+            "use": "@vercel/static"
         }
-    },
+    ],
     "routes": [
+        {
+            "src": "/build/(.*)",
+            "dest": "/public/build/$1",
+            "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
+        },
+        {
+            "src": "/fonts/(.*)",
+            "dest": "/public/fonts/$1",
+            "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
+        },
+        {
+            "src": "/css/(.*)",
+            "dest": "/public/css/$1",
+            "headers": { "Cache-Control": "public, max-age=86400" }
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "/public/js/$1",
+            "headers": { "Cache-Control": "public, max-age=86400" }
+        },
+        {
+            "src": "/images/(.*)",
+            "dest": "/public/images/$1",
+            "headers": { "Cache-Control": "public, max-age=86400" }
+        },
+        {
+            "src": "/favicon\\.ico",
+            "dest": "/public/favicon.ico",
+            "headers": { "Cache-Control": "public, max-age=86400" }
+        },
+        {
+            "src": "/robots\\.txt",
+            "dest": "/public/robots.txt",
+            "headers": { "Cache-Control": "public, max-age=86400" }
+        },
         {
             "handle": "filesystem"
         },
         {
             "src": "/(.*)",
-            "dest": "api/index.php"
+            "dest": "/api/index.php"
         }
     ],
+    "regions": ["bom1"],
     "crons": [
         {
             "path": "/v/cron",

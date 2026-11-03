@@ -38,11 +38,39 @@ return [
             'report' => false,
         ],
 
-        'public' => [
+        'public' => env('FILESYSTEM_PUBLIC_DRIVER', 'local') === 's3'
+            ? [
+                // Production (serverless): serve uploads from S3. Credentials,
+                // bucket, region and optional CDN URL come from the AWS_* envs.
+                'driver' => 's3',
+                'key' => env('AWS_ACCESS_KEY_ID'),
+                'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                'region' => env('AWS_DEFAULT_REGION'),
+                'bucket' => env('AWS_BUCKET'),
+                'url' => env('AWS_URL'),
+                'endpoint' => env('AWS_ENDPOINT'),
+                'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+                'visibility' => 'public',
+                'throw' => false,
+                'report' => false,
+            ]
+            : [
+                'driver' => 'local',
+                'root' => storage_path('app/public'),
+                'url' => env('APP_URL').'/storage',
+                'visibility' => 'public',
+                'throw' => false,
+                'report' => false,
+            ],
+
+        // Livewire temporary upload staging (points to a writable root on
+        // serverless platforms via LIVEWIRE_TMP_ROOT; final files go to
+        // whatever disk the upload is saved to, e.g. disk('public')).
+        'livewire-tmp' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
+            'root' => env('LIVEWIRE_TMP_ROOT', storage_path('app/private/livewire-tmp')),
+            'visibility' => 'private',
+            'serve' => false,
             'throw' => false,
             'report' => false,
         ],

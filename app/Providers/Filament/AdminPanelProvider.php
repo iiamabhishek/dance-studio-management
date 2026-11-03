@@ -63,10 +63,13 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
             ->passwordReset()
+            // TEMPORARY: brand logo hidden until uploads persist to S3 — the
+            // stored logo path points at a file that does not exist. Restore
+            // the three lines below once a real logo file is in place.
             ->brandName(fn (): string => strval(data_get(app(\App\Contracts\SettingsRepository::class)->get(), 'general.gym_name')) ?: 'Gymie')
-            ->brandLogo(fn (): string => $this->brandLogoUrl())
-            ->darkModeBrandLogo(fn (): string => $this->brandLogoUrl())
-            ->brandLogoHeight('2.5rem')
+            //->brandLogo(fn (): string => $this->brandLogoUrl())
+            //->darkModeBrandLogo(fn (): string => $this->brandLogoUrl())
+            //->brandLogoHeight('2.5rem')
             ->favicon('/images/favicon.svg')
             ->unsavedChangesAlerts()
             ->colors($this->colors())
@@ -85,6 +88,7 @@ class AdminPanelProvider extends PanelProvider
                 ->activeNavigationIcon(fn (): null => null)])
             ->middleware([
                 SetAppLocale::class,
+                \App\Http\Middleware\ForgetAssetIntendedUrl::class,
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
                 StartSession::class,

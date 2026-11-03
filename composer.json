@@ -45,6 +45,10 @@
         }
     },
     "scripts": {
+        "vercel": [
+            "@php -r \"@unlink('bootstrap/cache/packages.php');\"",
+            "@php artisan package:discover --ansi"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
